@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>测测你的童年含金量 · 90后00后专属</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+  :root{
+    --bg:#fdf6e3;
+    --bg-soft:#fbe9c9;
+    --card:#fffbeb;
+    --ink:#3f2a14;
+    --ink-soft:#8a6a45;
+    --primary:#c2410c;
+    --primary-deep:#9a3412;
+    --primary-soft:#fcd9b8;
+    --accent:#e0a458;
+    --paper:#fff8e7;
+    --shadow:0 10px 28px rgba(154,52,18,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{background:var(--bg);color:var(--ink);font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6}
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 10% -5%, #fcd9b8 0%, transparent 45%),
+      radial-gradient(circle at 110% 10%, #fbe9c9 0%, transparent 50%),
+      radial-gradient(circle at 50% 110%, #ffe9c2 0%, transparent 55%),
+      var(--bg);
+  }
+  .app{
+    max-width:480px;margin:0 auto;min-height:100vh;
+    padding:24px 20px calc(24px + env(safe-area-inset-bottom));
+    position:relative;
+  }
+  .serif{font-family:"Noto Serif SC",serif}
+  .view{display:none;animation:fadeIn .35s ease}
+  .view.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .footer-note{margin-top:28px;text-align:center;font-size:12px;color:var(--ink-soft);opacity:.85;line-height:1.6}
+
+  /* ===== Landing ===== */
+  .hero{margin-top:24px;text-align:center}
+  .hero .badge{
+    display:inline-block;padding:6px 14px;border-radius:999px;
+    background:var(--primary-soft);color:var(--primary-deep);
+    font-size:12px;letter-spacing:2px;font-weight:500;
+  }
+  .hero h1{
+    font-family:"Noto Serif SC",serif;font-weight:900;
+    font-size:30px;line-height:1.35;margin:18px 0 10px;letter-spacing:1px;
+  }
+  .hero h1 .hl{
+    background:linear-gradient(180deg,transparent 60%,#fcd9b8 60%);
+    padding:0 2px;
+  }
+  .hero .sub{color:var(--ink-soft);font-size:14px;margin-bottom:24px}
+
+  .hero-art{
+    width:100%;aspect-ratio:1/0.85;border-radius:24px;
+    background:
+      radial-gradient(circle at 20% 25%, #fcd9b8 0%, transparent 45%),
+      radial-gradient(circle at 80% 75%, #e0a458 0%, transparent 55%),
+      linear-gradient(135deg,#fbe9c9,#fcd9b8);
+    position:relative;overflow:hidden;box-shadow:var(--shadow);
+    margin-bottom:24px;
+  }
+  /* 老式电视机 */
+  .tv{
+    position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);
+    width:150px;height:110px;background:#5b3a1f;border-radius:14px;
+    box-shadow:inset 0 0 0 4px #3f2a14;
+  }
+  .tv .screen{
+    position:absolute;left:12px;top:12px;width:90px;height:70px;
+    background:repeating-linear-gradient(0deg,#fff8e7 0 3px,#fbe9c9 3px 6px);
+    border-radius:8px;
+  }
+  .tv .knobs{
+    position:absolute;right:10px;top:14px;display:flex;flex-direction:column;gap:6px;
+  }
+  .tv .knobs i{
+    width:10px;height:10px;border-radius:50%;background:#fcd9b8;display:block;
+  }
+  .tv .antenna{
+    position:absolute;left:50%;top:-18px;width:2px;height:22px;background:#3f2a1f;
+    transform-origin:bottom center;
+  }
+  .tv .antenna.a1{transform:translateX(-50%) rotate(-25deg)}
+  .tv .antenna.a2{transform:translateX(-50%) rotate(20deg)}
+  /* 太阳光斑 */
+  .sun{
+    position:absolute;top:14px;right:20px;width:36px;height:36px;border-radius:50%;
+    background:#e0a458;opacity:.7;
+    box-shadow:0 0 24px 8px rgba(224,164,88,.4);
+  }
+  .cloud{
+    position:absolute;background:#fff8e7;border-radius:999px;opacity:.8;
+  }
+  .cloud.c1{width:60px;height:14px;top:24px;left:24px}
+  .cloud.c2{width:40px;height:10px;top:48px;left:50px}
+
+  .features{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+  .feature{
+    display:flex;align-items:center;gap:12px;
+    background:var(--card);border-radius:16px;padding:12px 16px;
+    box-shadow:0 4px 14px rgba(154,52,18,.1);
+    font-size:14px;
+  }
+  .feature .check{
+    flex:none;width:22px;height:22px;border-radius:50%;
+    background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;
+  }
+  .feature .label{font-weight:700;color:var(--primary-deep)}
+  .feature .desc{color:var(--ink-soft)}
+
+  .cta{
+    display:block;width:100%;padding:16px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-deep));
+    color:#fff;border:none;border-radius:999px;
+    font-size:16px;font-weight:700;letter-spacing:2px;
+    box-shadow:0 10px 24px rgba(194,65,12,.35);
+    cursor:pointer;transition:transform .15s ease;
+    font-family:inherit;
+  }
+  .cta:active{transform:scale(.97)}
+
+  /* ===== Quiz ===== */
+  .quiz-head{
+    display:flex;align-items:center;justify-content:space-between;
+    margin:8px 0 14px;font-size:12px;color:var(--ink-soft);
+  }
+  .progress{
+    width:100%;height:6px;background:var(--primary-soft);border-radius:999px;
+    overflow:hidden;margin-bottom:24px;
+  }
+  .progress > div{
+    height:100%;background:linear-gradient(90deg,var(--primary),var(--primary-deep));
+    border-radius:999px;transition:width .3s ease;
+  }
+  .q-card{
+    background:var(--card);border-radius:22px;padding:24px 20px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .q-card::before{
+    content:"";position:absolute;left:20px;right:20px;top:14px;height:1px;
+    background:repeating-linear-gradient(90deg,var(--primary-soft) 0 6px,transparent 6px 12px);
+  }
+  .q-num{
+    font-size:12px;color:var(--primary-deep);font-weight:700;
+    letter-spacing:2px;margin-bottom:10px;
+  }
+  .q-title{
+    font-family:"Noto Serif SC",serif;font-weight:700;
+    font-size:19px;line-height:1.5;margin-bottom:20px;
+  }
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{
+    text-align:left;background:var(--bg-soft);
+    border:1.5px solid transparent;border-radius:14px;
+    padding:14px 16px;font-size:14px;color:var(--ink);
+    cursor:pointer;transition:all .15s ease;font-family:inherit;
+    line-height:1.5;
+  }
+  .opt:hover{background:var(--primary-soft)}
+  .opt.selected{
+    background:var(--paper);border-color:var(--primary);color:var(--primary-deep);font-weight:500;
+  }
+  .opt .key{
+    display:inline-block;width:22px;height:22px;border-radius:50%;
+    background:var(--paper);color:var(--primary-deep);font-size:12px;font-weight:700;
+    text-align:center;line-height:22px;margin-right:8px;flex:none;
+  }
+  .opt.selected .key{background:var(--primary);color:#fff}
+
+  .quiz-nav{display:flex;gap:10px;margin-top:18px}
+  .btn{
+    flex:1;padding:12px;border-radius:999px;border:none;
+    font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;
+  }
+  .btn-ghost{background:transparent;color:var(--ink-soft)}
+  .btn-primary{
+    background:var(--primary);color:#fff;box-shadow:0 6px 16px rgba(194,65,12,.3);
+  }
+  .btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+
+  /* ===== Result ===== */
+  .result-wrap{text-align:center;padding-top:10px}
+  .result-emoji{
+    width:90px;height:90px;margin:0 auto 16px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-deep));
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 30px rgba(194,65,12,.35);
+  }
+  .result-emoji svg{width:46px;height:46px;fill:#fff}
+  .result-tag{
+    display:inline-block;padding:5px 14px;border-radius:999px;
+    background:var(--primary-soft);color:var(--primary-deep);
+    font-size:12px;font-weight:700;letter-spacing:2px;margin-bottom:10px;
+  }
+  .result-name{
+    font-family:"Noto Serif SC",serif;font-weight:900;
+    font-size:26px;line-height:1.3;margin-bottom:6px;
+  }
+  .result-sub{color:var(--primary-deep);font-size:14px;margin-bottom:20px;font-weight:500}
+  .result-card{
+    background:var(--card);border-radius:20px;padding:20px;text-align:left;
+    box-shadow:var(--shadow);margin-bottom:14px;
+  }
+  .result-card h4{
+    font-size:12px;color:var(--primary-deep);letter-spacing:2px;
+    margin-bottom:8px;font-weight:700;
+  }
+  .result-card p{font-size:14px;line-height:1.7;color:var(--ink)}
+  .bars{margin-top:8px}
+  .bar-row{display:flex;align-items:center;gap:8px;font-size:12px;margin-bottom:6px}
+  .bar-row .name{width:96px;color:var(--ink-soft);flex:none;text-align:right}
+  .bar-row .track{flex:1;height:6px;background:var(--bg-soft);border-radius:999px;overflow:hidden}
+  .bar-row .fill{height:100%;background:var(--primary);border-radius:999px}
+  .bar-row .val{width:24px;text-align:right;color:var(--ink-soft)}
+
+  .share-tip{
+    background:var(--bg-soft);border-radius:14px;padding:12px 16px;
+    font-size:12px;color:var(--ink-soft);margin-bottom:16px;line-height:1.6;
+  }
+
+  @media (min-width:480px){
+    .app{padding:40px 32px}
+    .hero h1{font-size:34px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ===== 落地页 ===== -->
+  <section class="view active" id="view-landing">
+    <div class="hero">
+      <span class="badge">90后 · 00后怀旧测试</span>
+      <h1>测测你的<br><span class="hl">童年含金量</span>是几克拉</h1>
+      <p class="sub">那些年的暑假、辣条、小霸王和动画片，你占了几样？</p>
+      <div class="hero-art">
+        <div class="sun"></div>
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="tv">
+          <span class="antenna a1"></span>
+          <span class="antenna a2"></span>
+          <div class="screen"></div>
+          <div class="knobs"><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature"><span class="check">✓</span><div><span class="label">集体记忆</span>｜<span class="desc">一看就上头的童年细节</span></div></div>
+      <div class="feature"><span class="check">✓</span><div><span class="label">八种童年</span>｜<span class="desc">看看你是哪一款长大的</span></div></div>
+      <div class="feature"><span class="check">✓</span><div><span class="label">含金量评级</span>｜<span class="desc">测完你就知道自己多幸福</span></div></div>
+      <div class="feature"><span class="check">✓</span><div><span class="label">转发好友</span>｜<span class="desc">看看谁才是真·童年赢家</span></div></div>
+    </div>
+
+    <button class="cta" onclick="startQuiz()">开始回忆 →</button>
+
+    <p class="footer-note">仅供娱乐 · 致我们再也回不去的暑假</p>
+  </section>
+
+  <!-- ===== 答题页 ===== -->
+  <section class="view" id="view-quiz">
+    <div class="quiz-head">
+      <span id="q-progress-text">1 / 28</span>
+      <span>凭直觉选就好</span>
+    </div>
+    <div class="progress"><div id="q-bar" style="width:4%"></div></div>
+
+    <div class="q-card">
+      <div class="q-num" id="q-num">QUESTION 01</div>
+      <div class="q-title" id="q-title"></div>
+      <div class="opts" id="opts"></div>
+    </div>
+
+    <div class="quiz-nav">
+      <button class="btn btn-ghost" id="btn-prev" onclick="prevQ()">← 上一题</button>
+      <button class="btn btn-primary" id="btn-next" onclick="nextQ()" disabled>下一题 →</button>
+    </div>
+
+    <p class="footer-note">仅供娱乐 · 别拿结果去怼同学</p>
+  </section>
+
+  <!-- ===== 结果页 ===== -->
+  <section class="view" id="view-result">
+    <div class="result-wrap">
+      <div class="result-emoji">
+        <svg viewBox="0 0 24 24"><path d="M12 2L15 8.5L22 9.3L17 14L18.2 21L12 17.8L5.8 21L7 14L2 9.3L9 8.5Z"/></svg>
+      </div>
+      <span class="result-tag" id="r-tag">YOUR RESULT</span>
+      <div class="result-name serif" id="r-name"></div>
+      <div class="result-sub" id="r-sub"></div>
+
+      <div class="result-card">
+        <h4>人 设 解 读</h4>
+        <p id="r-persona"></p>
+      </div>
+      <div class="result-card">
+        <h4>一 句 话</h4>
+        <p id="r-one"></p>
+      </div>
+      <div class="result-card">
+        <h4>童 年 含 金 量</h4>
+        <p id="r-tip"></p>
+      </div>
+
+      <div class="result-card">
+        <h4>你 的 童 年 分 布</h4>
+        <div class="bars" id="r-bars"></div>
+      </div>
+
+      <div class="share-tip">
+        转发给你当年一起逃课的那位 ｜ 评论区扣你的童年类型
+      </div>
+
+      <button class="cta" onclick="restart()">再测一次 →</button>
+    </div>
+    <p class="footer-note">仅供娱乐 · 致我们再也回不去的暑假</p>
+  </section>
+
+</div>
+
+<script>
+/* A=胡同野孩子 B=大院书香 C=掌上明珠 D=放养散养
+   E=网游原住民 F=奖状墙选手 G=兄弟姐妹混战 H=小镇田野 */
+const RESULT_META = {
+  a:{name:"胡同野孩子型", sub:"夏天的回忆都是泥土味"},
+  b:{name:"大院书香少年型", sub:"琴棋书画轮着上"},
+  c:{name:"掌上明珠型", sub:"全家把你捧在手心"},
+  d:{name:"放养散养型", sub:"能活着长这么大就是奇迹"},
+  e:{name:"网游原住民型", sub:"键盘就是童年武器"},
+  f:{name:"奖状墙选手型", sub:"大人嘴里的别人家孩子"},
+  g:{name:"兄弟姐妹混战型", sub:"打架抢吃又抱团"},
+  h:{name:"小镇田野童年型", sub:"追风捉鱼爬树偷瓜"}
+};
+const RESULT_DESC = {
+  a:{persona:"你的童年没有培训班，只有胡同口、电线杆和满膝盖的土。放学书包一扔就冲出大院，不到天黑妈不喊绝不回家。你会爬树、会拍画片、会用弹弓打瓶子，夏天的记忆是蝉鸣、冰棍纸和傍晚的胡同。",one:"你的童年含金量不在物质，在自由。那是现在的小孩用钱都买不回来的东西。",tip:"哪天路过老胡同，蹲下来摸摸那块被你磨亮的石头——它还记得你。"},
+  b:{persona:"你的童年日程表比老板还满：周一钢琴、周二英语、周四画画、周末奥数。你坐过少年宫的小板凳、被老师按着手腕写毛笔字、在家长会上代表全班发言。别人在外面疯跑的时候，你在琴凳上数拍子。",one:"你不一定热爱那些兴趣班，但你长出来的那份定力，是很多人没有的。",tip:"如果今天还能捡回一样当年被逼着学的东西，你会感谢小时候的自己。"},
+  c:{persona:"你是全家的中心。爷爷奶奶外公外婆轮着接，书包永远最轻，零食永远不断，过年红包最厚。别的孩子在校门口抽奖袋，你已经有了正版芭比和变形金刚。",one:"你的童年含金量拉满——不是因为贵，是因为被爱过。",tip:"现在的你，可能比同龄人更有安全感，因为你从小就知道自己是被爱的那个。"},
+  d:{persona:"你是钥匙挂在脖子上长大的一代。爸妈忙，放学自己开门、自己热饭、自己写作业、自己睡觉。你很早就学会了不麻烦别人，也很早就习惯了一个人。",one:"你不是没人爱，你是太早学会了自己照顾自己。",tip:"现在偶尔也可以允许自己麻烦一下别人，你已经一个人扛了很久了。"},
+  e:{persona:"你的童年是在电脑前面度过的。小霸王、文曲星、冒险岛、梦幻西游、QQ 堂、摩尔庄园——你的社交圈在网线那一头。你妈永远在你打副本的时候喊你吃饭。",one:"你是最早的一批数字游民，只是当年没人这么叫你。",tip:"打开你的第一个QQ号，看看当年那个头像，你会笑出声。"},
+  f:{persona:"你是家长嘴里的那个别人家孩子。奖状贴满一堵墙，考试双百是常态，三道杠是标配。你上课坐第一排，老师窗外凝视你根本不慌——因为你在认真听讲。",one:"你的童年含金量用奖状算，但长大后你会发现，人生不是一场考试。",tip:"偶尔允许自己考砸一次，天不会塌。你已经优秀太久了。"},
+  g:{persona:"你不是独生。家里有哥哥姐姐弟弟妹妹，电视遥控器永远在抢，吃饭时排骨永远要争，哭着打完架转头又一起去买冰棍。你是在吵吵闹闹里学会相处的。",one:"你的童年含金量不在玩具，在那些跟你抢东西的人。",tip:"有空给哥哥姐姐弟弟妹妹发个消息吧——他们是你这辈子最早的朋友。"},
+  h:{persona:"你的童年不在高楼里，在稻田边、小河沟、晒谷场。你会捉泥鳅、偷西瓜、爬树摘枣、跟大黄狗在田埂上跑。你的暑假没有空调，只有一台老式风扇和一根冰棍。",one:"你拥有过最奢侈的童年——一整个大自然。",tip:"如果累了，回乡下住几天。那块田还在等你。"}
+};
+
+const QUESTIONS = [
+  {t:"你的暑假通常是怎么过的？",o:[
+    {k:"A",txt:"满街跑，不到饭点不回家",tag:"a"},
+    {k:"B",txt:"培训班+作业+练琴，日程比上班还满",tag:"b"},
+    {k:"C",txt:"爷爷奶奶外公外婆轮着接，零食不断",tag:"c"},
+    {k:"D",txt:"一个人在家看电视，午饭自己热",tag:"d"}
+  ]},
+  {t:"放学铃一响，你第一件事是？",o:[
+    {k:"A",txt:"冲出校门跟小伙伴去玩",tag:"a"},
+    {k:"B",txt:"留下来写作业，等爸妈来接",tag:"f"},
+    {k:"C",txt:"被家长直接接走赶下一场",tag:"b"},
+    {k:"D",txt:"去小区便利店买根冰棍",tag:"c"}
+  ]},
+  {t:"你小时候最常说的一句话是？",o:[
+    {k:"A",txt:"妈我出门了！",tag:"a"},
+    {k:"B",txt:"知道了知道了",tag:"b"},
+    {k:"C",txt:"我妈不让我跟你玩",tag:"c"},
+    {k:"D",txt:"等我打完这局",tag:"e"}
+  ]},
+  {t:"你小时候的零花钱主要花在？",o:[
+    {k:"A",txt:"校门口五毛一包的辣条",tag:"a"},
+    {k:"B",txt:"文具店的笔袋和贴纸",tag:"b"},
+    {k:"C",txt:"点卡/游戏币/网吧",tag:"e"},
+    {k:"D",txt:"玩具反斗城/专柜",tag:"c"}
+  ]},
+  {t:"下面哪个是你的童年天花板？",o:[
+    {k:"A",txt:"小霸王学习机+超级玛丽",tag:"e"},
+    {k:"B",txt:"芭比娃娃/变形金刚正版",tag:"c"},
+    {k:"C",txt:"跳皮筋/丢沙包/滚铁环",tag:"h"},
+    {k:"D",txt:"乐高/钢琴/绘画班",tag:"b"}
+  ]},
+  {t:"寒暑假作业你一般什么时候写？",o:[
+    {k:"A",txt:"放假第一天就写完",tag:"f"},
+    {k:"B",txt:"最后一个晚上疯狂补",tag:"d"},
+    {k:"C",txt:"每天写一点，很规律",tag:"b"},
+    {k:"D",txt:"根本不写，开学装忘带",tag:"a"}
+  ]},
+  {t:"你被爸妈揍，最常见的原因是？",o:[
+    {k:"A",txt:"野到天黑不回家",tag:"h"},
+    {k:"B",txt:"考试没考好",tag:"f"},
+    {k:"C",txt:"偷偷玩电脑被发现",tag:"e"},
+    {k:"D",txt:"打碎了家里的东西",tag:"d"}
+  ]},
+  {t:"你童年的BGM是？",o:[
+    {k:"A",txt:"西游记/新白娘子传奇重播",tag:"d"},
+    {k:"B",txt:"喜羊羊/熊出没/巴啦啦小魔仙",tag:"g"},
+    {k:"C",txt:"周杰伦/S.H.E/Twins",tag:"b"},
+    {k:"D",txt:"仙剑/魔兽世界登录音乐",tag:"e"}
+  ]},
+  {t:"你最经典的童年午餐是？",o:[
+    {k:"A",txt:"妈妈带的饭盒，全班都馋",tag:"c"},
+    {k:"B",txt:"校门口五块钱的炸串加饼",tag:"a"},
+    {k:"C",txt:"学校食堂的不锈钢餐盘",tag:"f"},
+    {k:"D",txt:"泡面+火腿肠，一个人在家",tag:"d"}
+  ]},
+  {t:"你的童年照风格最可能是？",o:[
+    {k:"A",txt:"缺颗门牙，浑身是土",tag:"h"},
+    {k:"B",txt:"小西装/小礼服，照相馆拍的",tag:"c"},
+    {k:"C",txt:"抱个奖状笑得一本正经",tag:"f"},
+    {k:"D",txt:"戴个眼镜，抱着电脑",tag:"e"}
+  ]},
+  {t:"你小时候跟谁最亲？",o:[
+    {k:"A",txt:"爷爷奶奶/外公外婆",tag:"c"},
+    {k:"B",txt:"哥哥姐姐，被带着长大",tag:"g"},
+    {k:"C",txt:"小区里一起疯的发小",tag:"a"},
+    {k:"D",txt:"没什么特别，主要自己待着",tag:"d"}
+  ]},
+  {t:"你最害怕的童年阴影是？",o:[
+    {k:"A",txt:"班主任的窗外凝视",tag:"f"},
+    {k:"B",txt:"爸妈突然回家开门的声音",tag:"e"},
+    {k:"C",txt:"黑楼道里的声控灯",tag:"a"},
+    {k:"D",txt:"一个人睡的房间",tag:"d"}
+  ]},
+  {t:"校门口最让你走不动道的是？",o:[
+    {k:"A",txt:"抽奖袋/拍画片/溜溜球",tag:"a"},
+    {k:"B",txt:"干脆面集水浒卡",tag:"g"},
+    {k:"C",txt:"奶茶店/手抓饼",tag:"b"},
+    {k:"D",txt:"根本不去校门口，爸妈接送",tag:"c"}
+  ]},
+  {t:"你小时候的梦想是？",o:[
+    {k:"A",txt:"当警察/科学家/宇航员",tag:"f"},
+    {k:"B",txt:"开一家玩具店",tag:"a"},
+    {k:"C",txt:"当歌星/演员",tag:"b"},
+    {k:"D",txt:"网吧包夜自由",tag:"e"}
+  ]},
+  {t:"你的寒暑假是被谁接管的？",o:[
+    {k:"A",txt:"我自己，钥匙挂脖子上",tag:"d"},
+    {k:"B",txt:"外婆/奶奶家，电视看到吐",tag:"c"},
+    {k:"C",txt:"各种夏令营/兴趣班",tag:"b"},
+    {k:"D",txt:"跟表哥表弟挤一个房间",tag:"g"}
+  ]},
+  {t:"你小学同学现在还联系吗？",o:[
+    {k:"A",txt:"一个微信群，每年还聚",tag:"g"},
+    {k:"B",txt:"早就断了，谁也想不起来谁",tag:"d"},
+    {k:"C",txt:"有一两个发小，像家人",tag:"a"},
+    {k:"D",txt:"学霸群/家长群偶尔冒泡",tag:"f"}
+  ]},
+  {t:"你童年最奢侈的一件事是？",o:[
+    {k:"A",txt:"爸妈带出国/迪士尼",tag:"c"},
+    {k:"B",txt:"攒半年买个GBA/PSP",tag:"e"},
+    {k:"C",txt:"跟同学一起凑钱买大蛋糕",tag:"a"},
+    {k:"D",txt:"出国游学/夏令营",tag:"b"}
+  ]},
+  {t:"你写字台最可能贴着什么？",o:[
+    {k:"A",txt:"课程表+三好学生奖状",tag:"f"},
+    {k:"B",txt:"周杰伦/Super Junior海报",tag:"b"},
+    {k:"C",txt:"奥特曼/变形金刚贴纸",tag:"a"},
+    {k:"D",txt:"根本没有写字台",tag:"d"}
+  ]},
+  {t:"你童年的社交货币是？",o:[
+    {k:"A",txt:"水浒卡/三国卡",tag:"g"},
+    {k:"B",txt:"小灵通/MP3/文曲星",tag:"e"},
+    {k:"C",txt:"好看的笔袋/笔芯/贴纸",tag:"b"},
+    {k:"D",txt:"根本不需要社交，家里有人陪",tag:"c"}
+  ]},
+  {t:"你被老师点名回答问题，通常是因为？",o:[
+    {k:"A",txt:"上课传纸条/讲话",tag:"a"},
+    {k:"B",txt:"成绩进步/被表扬",tag:"f"},
+    {k:"C",txt:"没做作业",tag:"d"},
+    {k:"D",txt:"代表班级去比赛",tag:"b"}
+  ]},
+  {t:"你童年最常见的家庭气氛是？",o:[
+    {k:"A",txt:"爸妈围着你转，嘘寒问暖",tag:"c"},
+    {k:"B",txt:"爸妈忙，很少见到人",tag:"d"},
+    {k:"C",txt:"一大家子，兄弟姐妹挤一屋",tag:"g"},
+    {k:"D",txt:"爸妈严格，家像教室",tag:"f"}
+  ]},
+  {t:"你最经典的童年零食是？",o:[
+    {k:"A",txt:"麦丽素/AD钙奶/大大卷",tag:"g"},
+    {k:"B",txt:"学校门口辣条/唐僧肉",tag:"a"},
+    {k:"C",txt:"进口饼干/车厘子/进口奶",tag:"c"},
+    {k:"D",txt:"干脆面/泡面/火腿肠",tag:"d"}
+  ]},
+  {t:"你小学最牛的一项技能是？",o:[
+    {k:"A",txt:"翻花绳/跳皮筋/丢沙包",tag:"h"},
+    {k:"B",txt:"弹钢琴/画画/书法",tag:"b"},
+    {k:"C",txt:"打游戏/敲键盘",tag:"e"},
+    {k:"D",txt:"考双百",tag:"f"}
+  ]},
+  {t:"你怎么过除夕夜？",o:[
+    {k:"A",txt:"一大家子吃年夜饭看春晚",tag:"g"},
+    {k:"B",txt:"爸妈带你去大酒店/旅游过年",tag:"c"},
+    {k:"C",txt:"跟着小伙伴放鞭炮",tag:"h"},
+    {k:"D",txt:"守着电脑/电视，一个人",tag:"d"}
+  ]},
+  {t:"你最经典的童年装备是？",o:[
+    {k:"A",txt:"三道杠/两道杠袖标",tag:"f"},
+    {k:"B",txt:"小霸王/学习机/步步高",tag:"e"},
+    {k:"C",txt:"小裙子/小皮鞋/蝴蝶结",tag:"c"},
+    {k:"D",txt:"满是土的运动鞋+短裤",tag:"h"}
+  ]},
+  {t:"老师让写我的理想，你写的是？",o:[
+    {k:"A",txt:"科学家/医生/老师",tag:"f"},
+    {k:"B",txt:"画家/音乐家/作家",tag:"b"},
+    {k:"C",txt:"游戏主播/电竞选手",tag:"e"},
+    {k:"D",txt:"没写，抄同学的",tag:"d"}
+  ]},
+  {t:"你的童年夏天是什么颜色？",o:[
+    {k:"A",txt:"西瓜红+电风扇的白",tag:"g"},
+    {k:"B",txt:"游泳池蓝+少年宫黄",tag:"b"},
+    {k:"C",txt:"泥土黄+冰棍纸的彩色",tag:"h"},
+    {k:"D",txt:"电脑屏幕的蓝光",tag:"e"}
+  ]},
+  {t:"如果穿越回童年，你最想做的是？",o:[
+    {k:"A",txt:"再跟发小疯跑一次",tag:"a"},
+    {k:"B",txt:"让爸妈别那么严",tag:"f"},
+    {k:"C",txt:"跟兄弟姐妹再多抢一次电视",tag:"g"},
+    {k:"D",txt:"早点开始玩游戏",tag:"e"}
+  ]}
+];
+
+let cur = 0;
+const answers = new Array(QUESTIONS.length).fill(null);
+
+function show(id){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"instant"});
+}
+function startQuiz(){ cur=0; show("view-quiz"); renderQ(); }
+function restart(){ cur=0; answers.fill(null); show("view-landing"); }
+
+function renderQ(){
+  const q = QUESTIONS[cur];
+  document.getElementById("q-num").textContent = "QUESTION " + String(cur+1).padStart(2,"0");
+  document.getElementById("q-progress-text").textContent = (cur+1) + " / " + QUESTIONS.length;
+  document.getElementById("q-bar").style.width = ((cur+1)/QUESTIONS.length*100) + "%";
+  document.getElementById("q-title").textContent = q.t;
+
+  const wrap = document.getElementById("opts");
+  wrap.innerHTML = "";
+  q.o.forEach((opt,idx)=>{
+    const b = document.createElement("button");
+    b.className = "opt" + (answers[cur]===idx?" selected":"");
+    b.innerHTML = '<span class="key">'+opt.k+'</span>'+opt.txt;
+    b.onclick = ()=>{
+      answers[cur]=idx;
+      [...wrap.children].forEach(c=>c.classList.remove("selected"));
+      b.classList.add("selected");
+      document.getElementById("btn-next").disabled = false;
+      setTimeout(()=>nextQ(),260);
+    };
+    wrap.appendChild(b);
+  });
+
+  document.getElementById("btn-prev").disabled = cur===0;
+  const btnNext = document.getElementById("btn-next");
+  btnNext.disabled = answers[cur]===null;
+  btnNext.textContent = cur===QUESTIONS.length-1 ? "查看结果 →" : "下一题 →";
+}
+function prevQ(){ if(cur>0){cur--;renderQ();} }
+function nextQ(){
+  if(answers[cur]===null) return;
+  if(cur<QUESTIONS.length-1){ cur++; renderQ(); }
+  else{ showResult(); }
+}
+
+function showResult(){
+  const scores = {a:0,b:0,c:0,d:0,e:0,f:0,g:0,h:0};
+  answers.forEach((ans,i)=>{
+    if(ans===null) return;
+    const tag = QUESTIONS[i].o[ans].tag;
+    scores[tag]++;
+  });
+  let topKey="a", topScore=-1;
+  for(const k in scores){ if(scores[k]>topScore){topScore=scores[k];topKey=k;} }
+
+  const meta = RESULT_META[topKey];
+  const desc = RESULT_DESC[topKey];
+  document.getElementById("r-tag").textContent = "YOUR RESULT · " + meta.name;
+  document.getElementById("r-name").textContent = meta.name;
+  document.getElementById("r-sub").textContent = meta.sub;
+  document.getElementById("r-persona").textContent = desc.persona;
+  document.getElementById("r-one").textContent = desc.one;
+  document.getElementById("r-tip").textContent = desc.tip;
+
+  const barWrap = document.getElementById("r-bars");
+  barWrap.innerHTML = "";
+  const sorted = Object.keys(scores).sort((x,y)=>scores[y]-scores[x]).slice(0,5);
+  sorted.forEach(k=>{
+    const row = document.createElement("div");
+    row.className="bar-row";
+    row.innerHTML = '<div class="name">'+RESULT_META[k].name+'</div>'+
+      '<div class="track"><div class="fill" style="width:'+(scores[k]/QUESTIONS.length*100)+'%"></div></div>'+
+      '<div class="val">'+scores[k]+'</div>';
+    barWrap.appendChild(row);
+  });
+
+  show("view-result");
+}
+</script>
+</body>
+</html>
